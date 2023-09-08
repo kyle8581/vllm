@@ -38,6 +38,8 @@ def get_tokenizer(
             *args,
             trust_remote_code=trust_remote_code,
             **kwargs)
+        if tokenizer.pad_token_id == None:
+            tokenizer.pad_token_id = tokenizer.eos_token_id
     except TypeError as e:
         # The LLaMA tokenizer causes a protobuf error in some environments.
         err_msg = (
