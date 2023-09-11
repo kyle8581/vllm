@@ -39,19 +39,19 @@ def get_tokenizer(
             trust_remote_code=trust_remote_code,
             **kwargs)
         if tokenizer.pad_token_id == None:
-            if "llama" in tokenizer_name.lower():
-                tokenizer.pad_token='[PAD]'
-                tokenizer.unk_token = '[PAD]'
-                tokenizer.add_special_tokens({
-                        "unk_token": tokenizer.convert_ids_to_tokens(
-                            tokenizer.pad_token_id
-                        ),
-                })
-                print("#"*50)
-                print("[PAD] token is set for padding token.")
-                print("#"*50)
-            else:
-                tokenizer.pad_token_id = tokenizer.eos_token_id
+            # if "llama" in tokenizer_name.lower():
+            tokenizer.pad_token='[PAD]'
+            tokenizer.unk_token = '[PAD]'
+            tokenizer.add_special_tokens({
+                    "unk_token": tokenizer.convert_ids_to_tokens(
+                        tokenizer.pad_token_id
+                    ),
+            })
+            print("#"*50)
+            print("[PAD] token is set for padding token.")
+            print("#"*50)
+            # else:
+            #     tokenizer.pad_token_id = tokenizer.eos_token_id
     except TypeError as e:
         # The LLaMA tokenizer causes a protobuf error in some environments.
         err_msg = (
