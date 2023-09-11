@@ -47,6 +47,9 @@ def get_tokenizer(
                             tokenizer.pad_token_id
                         ),
                 })
+                print("#"*50)
+                print("[PAD] token is set for padding token.")
+                print("#"*50)
             else:
                 tokenizer.pad_token_id = tokenizer.eos_token_id
     except TypeError as e:
